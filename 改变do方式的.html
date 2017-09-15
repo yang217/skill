@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //创建一个结点，把传入的参数当作样式
+        function addStyleNode(str){
+            var styleNode = document.createElement('style');
+            styleNode.type  = 'text/css';
+            if(styleNode.styleSheet){
+                styleNode.styleSheet.cssText = str;//ie下要通过style.cssText进行写操作
+            }else{
+                styleNode.innHTML = str;//firefox可以直接对innHTML进行操作
+            }
+            document.getElementsByTagName('head')[0].appendChild(styleNode);
+        }
+        addStyleNode('span{font-size:40px;background:#000,color:#fff} #test{color:red}');
+    </script>
+
+</body>
+</html>

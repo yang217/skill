@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="set" >点击我</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+      var isRun=true;
+      var timer;
+      function runa(){
+
+          console.log('is run');
+      }
+     
+     $("#set").click(function(){
+        clearTimeout(timer)
+         if(isRun){
+             runa();
+             isRun=false;
+         }
+
+         timer=setTimeout(function(){
+             isRun=true;
+         },5000) //点击后相隔多长时间可执行
+     })
+</script>
+</body>
+</html>

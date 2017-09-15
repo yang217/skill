@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+     .chk_1 { 
+    display: none; 
+} 
+ 
+.chk_1 + label { 
+    background-color: #FFF; 
+    border: 1px solid #C1CACA; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05); 
+    padding: 9px; 
+    border-radius: 5px; 
+    display: inline-block; 
+    position: relative; 
+    margin-right: 30px; 
+} 
+.chk_1 + label:active { 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1); 
+} 
+ 
+.chk_1:checked + label { 
+    background-color: #ECF2F7; 
+    border: 1px solid #92A1AC; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1); 
+    color: #243441; 
+} 
+ 
+.chk_1:checked + label:after { 
+    content: '√'; //勾选符号 
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    color: #758794; 
+     
+    text-align: center; 
+    font-size: 1.4em; 
+    padding: 1px 0 0 0; 
+    vertical-align: text-top; 
+} 
+	</style>
+</head>
+<body>
+<a href="history.html">eeee</a>
+<!--  <input type="checkbox" id="checkbox_a1" class="chk_1" /> 
+<label for="checkbox_a1"></label> --> 
+<span class="cbox" onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></span>222222222
+<style>
+  .cbox{display:inline-block;width:16px;height:16px;border:1px solid #ccc;background:#fff;}
+  .cbox.checked{background:#fff;border: 1px orange solid;}
+  .cbox.checked:after{content:"√"}
+</style>
+</body>
+</html>

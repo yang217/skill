@@ -1,0 +1,19 @@
+var time = 0;//初始化
+$(".weui-cells .weui-cell").on('touchstart', function(e){
+    e.stopPropagation();
+    var self = $(this);
+    time = setTimeout(function(){
+        showCloseImg(self);
+    }, 1000);//这里设置长按响应时间
+});
+
+$(".weui-cells .weui-cell").on('touchend', function(e){
+    e.stopPropagation();
+    clearTimeout(time);
+});
+
+function showCloseImg(self){
+    $.confirm("你确定要删除吗", function() {
+        self.remove();
+    });
+}

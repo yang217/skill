@@ -1,0 +1,15 @@
+   .box{
+       	width: 3rem;
+       	height: 3rem;
+       	color:green;
+        color: red;
+        color: blue;
+        color: red;
+        color: blue;
+       }
+       .box a{
+       	font-size: 0.6rem;
+       }
+       .box{
+         font-size: 60px
+       }

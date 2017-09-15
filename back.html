@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+	     body{
+	     	height: 2000px;
+	     }
+         button{
+         	position: fixed;
+         	bottom: 0;
+         }
+	</style>
+</head>
+<body>
+<ul id="header">
+<li class="nav">
+<a href="居中.html">1111</a>
+</li>
+</ul>
+<button id="btn">回到顶部</button>
+<script type="text/javascript">
+$("#header .nav a").click(function(event) {
+	/* Act on the event */
+	 event.preventDefault();
+	   history.replaceState(null, document.title, this.href.split('#')[0] + '#');
+    location.replace('');
+});
+var btn=document.getElementById("btn");
+btn.onclick=function(){
+	Math.easeout = function (A, B, rate, callback) {
+    if (A == B || typeof A != 'number') {
+        return;    
+    }
+    B = B || 0;
+    rate = rate || 2;
+    
+    var step = function () {
+        A = A + (B - A) / rate;
+        
+        if (A < 1) {
+            callback(B, true);
+            return;
+        }
+        callback(A, false);
+        requestAnimationFrame(step);    
+    };
+    step();
+};
+var doc = document.body.scrollTop? document.body : document.documentElement;
+Math.easeout(doc.scrollTop, 0, 4, function (value) {
+    doc.scrollTop = value;
+});
+}
+
+</script>
+</body>
+</html>

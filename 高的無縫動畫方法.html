@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style>
+		.box { width: 400px; padding: 20px; border: 40px solid #a0b3d6; background-color: #eee; overflow: hidden; }
+		.loading { height: 100%; background: url(loading.gif) no-repeat center; }
+		.in { width: 100px; margin: 0 auto;  border: 50px solid #beceeb; background-color: #f0f3f9; }
+		[type=button] { width: 100px; height: 32px; font-size: 100%; }
+        .pcl{
+        	height: 30px;
+        	color: green;
+        }
+      
+
+	</style>
+</head>
+<body>
+
+<div id="box" class="box">
+<div id="load"></div>
+
+</div>
+<p>
+    <input type="button" id="button" value="点击我">
+</p>
+<script type="text/javascript">
+
+var funTransitionHeight = function(element, time) { // time, 数值，可缺省
+    if (typeof window.getComputedStyle == "undefined") return;
+    
+    var height = window.getComputedStyle(element).height;
+
+    element.style.transition = "none";    // 本行2015-05-20新增，mac Safari下，貌似auto也会触发transition, 故要none下~
+   
+    element.style.height = "auto";
+    var targetHeight = window.getComputedStyle(element).height;
+    element.style.height = height;
+    element.offsetWidth = element.offsetWidth;
+    if (time) element.style.transition = "height "+ time +"ms";
+    element.style.height = targetHeight;
+};
+   var box=document.getElementById("box");
+   var btn=document.getElementById("button");
+       btn.onclick=function(){
+
+       	for(var i=0;i<10;i++){
+       	funTransitionHeight(box,5000)
+          var p=document.createElement("p");
+              p.className="pcl"
+              p.innerHTML="高度過渡效果";
+              box.appendChild(p)
+
+       	}
+        
+       
+       }
+
+
+// var funTransitionHeight = function(element, time) { // time, 数值，可缺省
+//     if (typeof window.getComputedStyle == "undefined") return;
+    
+//     var height = window.getComputedStyle(element).height;
+
+//     element.style.transition = "none";    // 本行2015-05-20新增，mac Safari下，貌似auto也会触发transition, 故要none下~
+   
+//     element.style.height = "auto";
+//     var targetHeight = window.getComputedStyle(element).height;
+//     element.style.height = height;
+//     // element.offsetWidth = element.offsetWidth;
+//     element.offsetWidth;
+//     if (time) element.style.transition = "height "+ time +"ms";
+//     element.style.height = targetHeight;
+// };
+
+</script>
+</body>
+</html>

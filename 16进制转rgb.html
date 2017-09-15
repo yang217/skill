@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+
+//第一种
+function getrgb(str){
+	var pattern =new RegExp(/^#[0-9a-fA-F]{6}$/); 
+	if(!pattern.test(str)){
+		console.log("invalid hex");
+		return;
+	}
+	var num = parseInt(str.slice(1),16);
+	
+	var b = num %　256;
+	num = parseInt(num / 256);
+	var g = num %　256;
+	num = parseInt(num / 256);   
+	var r = num %　256;
+	
+	return 'rgb('+r+","+g+","+b+")";
+}
+console.log(getrgb('#ababab'))
+//第二种
+function getrgb(str){
+	var pattern =new RegExp(/^#[0-9a-fA-F]{6}$/); 
+	if(!pattern.test(str)){
+		console.log("invalid hex");
+		return;
+	}
+	var num = parseInt(str.slice(1),16);  
+	return 'rgb('+((num >>> 16) & 255)+","+((num >>> 8) & 255)+","+(num & 255 )+")";
+//第三种
+function getrgb(str){
+	var pattern =new RegExp(/^#([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/); 
+	var arr=str.match(pattern);
+	if(!arr){
+		console.log("invalid hex");
+		return;
+	}  
+	return 'rgb('+parseInt(arr[1],16)+","+parseInt(arr[2],16)+","+parseInt(arr[3],16)+")";
+}
+标签：
+
+
+
+</script>
+</body>
+</html>

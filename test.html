@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	//webkit-font-smoothing: antialiased; * 可以让苹果和window字体表现一致
+// var ids=[
+//  {
+//    id:1,
+//    arr:[
+//       {
+//       	id:11,
+//       	arr:[{
+//       	  id:111
+//       	}
+//       	]
+//       }
+//    ]
+
+
+//  }
+
+
+
+// ]
+// var preOrder = function (node) { 
+//  if (node) {  
+//   console.log(node.id);
+//   preOrder(node.arr);
+//   
+//  }
+// }
+// preOrder(ids)
+// var levelOrderTraversal = function(node) { 
+//  if(!node) {  
+//   throw new Error('Empty Tree')
+//  } 
+//  var que = []
+//  que.push(node) 
+//  while(que.length !== 0) {
+//   node = que.shift()  
+//   console.log(node.id)  
+//   if(node.arr) {que.push(node.arr) } 
+
+// }
+// console.log(que)
+// console.log(node)
+// }
+// levelOrderTraversal(ids)
+var tree = {
+	value: 1,
+	left: {
+		value: 2,
+		left: {
+			value: 4
+		}
+	},
+	right: {
+		value: 3,
+		left: {
+			value: 5,
+			left: {
+				value: 7
+			},
+			right: {
+				value: 8
+			}
+		},
+		right: {
+			value: 6
+		}
+	}
+}
+var levelOrderTraversal = function(node) { 
+	if(!node) {  
+		throw new Error('Empty Tree')
+	} 
+	var que = []
+	que.push(node) ;//向数组中添加node,返回的是一个新的长度
+	console.log(que);
+	console.log(que.length)
+	while(que.length !== 0) {
+		node = que.shift() //返回数组的第一个 
+		if(node.left) {que.push(node.left) }
+			if(node.right){
+				que.push(node.right)
+		}
+}
+
+}
+levelOrderTraversal(tree);
+console.log((Date.now()))
+</script>
+</body>
+</html>

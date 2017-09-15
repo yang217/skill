@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+
+function toFixed() {
+    var args = Array.prototype.slice.call(arguments),
+        result = 1,
+        len = args.length;
+    for( var i=0; i<len; i++ ) {
+        result *= args[i]*10000000;
+    }
+    return (result/Math.pow(10000000, i)).toFixed(2);
+}
+var a = 75,
+    b = 0.119;
+console.log( toFixed(a, b) );
+</script>
+</body>
+</html>

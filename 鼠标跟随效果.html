@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标跟随效果</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		img{position:absolute;top:0;left:0;}
+	</style>
+</head>
+<body>
+	<img src="img/1-5.png" height="50" width="50" alt="" id="img">
+</body>
+<script type="text/javascript">
+	(function(window){
+		// 获取对象
+		var img = document.getElementById("img");
+		// 为页面添加单击事件，鼠标点击时图片滑动到鼠标所在位置
+		document.onclick = function(event){
+			var event = event || window.event;
+			// 获取鼠标在页面上的坐标
+			var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+			var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+			// 减去图片自身宽高的一半，使鼠标在图片中间
+			pageX = pageX - img.offsetWidth/2;
+			pageY = pageY - img.offsetWidth/2;
+			animate(img,{"left":pageX,"top":pageY});
+
+		};
+		// 封装缓动函数
+		function animate(obj,json,fn){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var flog = true ;
+				for( k in json ){
+					if( k === "zindex" ){
+						obj.style[k] = json[k];
+					}else if( k === "opacity" ){
+						var leader = getStyle(obj,k) * 100;
+						var target = json[k] * 100;
+						var step = ( target - leader ) / 10 ;
+						step = step > 0 ? Math.ceil( step ) : Math.floor( step );
+						leader = leader + step ;
+						obj.style[k] = leader / 100;
+					}else{
+						var leader = parseInt( getStyle(obj,k) );//当前的状态
+						var target = json[k];
+						var step = ( target - leader) / 10 ;
+						step = step > 0 ? Math.ceil( step ) : Math.floor( step );
+						leader = leader + step;
+						obj.style[k] = leader + "px";
+					};
+					if( leader !== target ){
+						flog = false;
+					}
+				}
+				if( flog ){
+					clearInterval(obj.timer);
+					if( fn ){
+						fn();
+					};
+				};
+			}, 15)
+		};
+		// 封装获取计算后样式的函数
+		function getStyle(obj,attr){
+			if( window.getComputedStyle ){
+				return window.getComputedStyle(obj,null)[attr];
+			}else{
+				return obj.currentStyle[attr];
+			};
+		};
+	})(window)
+</script>
+</html>

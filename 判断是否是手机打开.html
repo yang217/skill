@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+isMobile = 'ontouchstart' in document;
+
+console.log(({name:"yang"}.name));
+var x=100;
+var temp={
+	x:300,
+	foo:function(){
+        var x=200;
+        console.log(this)//这个this是temp
+		console.log(this.x)
+	}
+}
+temp.foo();
+function fun(){
+
+	console.log(this)//这个是window
+}
+fun()
+
+function convertToInt(num) {
+      return num >> 0;
+}
+console.log(convertToInt(-Math.PI))
+console.log(convertToInt(12.921))
+convertToInt(-Math.PI); // -3
+convertToInt(12.921); // 12
+// 很多人喜欢用浏览器UA的方式来判断，但并不是很好的方式
+
+function nsm() {console.log(this);}
+nsm(); // Window{top: xxxx}
+nsm.call(null/undefined); // Window{top: xxxx}
+nsm.call(1); // Number {[[PrimitiveValue]]: 1}
+//1继承nsm
+function sm() {'use strict'; console.log(this);}
+sm(); // undefined
+sm.call(null); // null
+sm.call(undefined); // undefined
+sm.call(1); // 1
+
+function item1(name){
+	this.name=name;
+	this.some=function(){
+		console.log(this.name)
+	}
+}
+function item2(name){
+	item1.call(this,name)//this代表了item1
+}
+var it=new item2("yang");
+it.some();
+
+function flatten(arr) {
+    if(!isArray(arr) || !arr.length) {
+        return [];
+    } else {
+        return Array.prototype.concat.apply([], arr.map(function(val) {
+            return isArray(val) ? flatten(val) : val;
+        }));
+    }
+
+    function isArray(arr) {
+        return Object.prototype.toString.call(arr).slice(8, -1).toLowerCase() === 'array';
+    }
+}
+flatten([1,2,[2,3,[4,5]]]);
+// [1, 2, 2, 3, 4, 5]
+</script>
+
+</body>
+</html>

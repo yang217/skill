@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="box1" class="box1"></div>
+<div id="box2" class="box2"></div>
+<div id="box3"></div>
+<script type="text/javascript">
+var str='ja aa c k';
+ var s= str.replace(/\s/g,"");//""的length是0
+document.write(s);//
+var d=" ";
+console.log("d",d.length);//d,1 因为一个空客也是一个数组程度
+
+	
+
+var hasClass = function (ele, cls) {// \s表示空白字符
+    cls = cls || '';
+    if (cls.replace(/\s/g, '').length == 0) {//用正则把空隙去掉,防止空class
+        return false;
+    }
+    return new RegExp(' ' + cls + ' ').test(' ' + ele.className + ' ');
+}
+
+var addClass = function (ele, cls) {
+    if (!hasClass(ele, cls)) {//如果不存在
+        ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
+    }
+};
+var box1=document.getElementById("box1");
+var box2=document.getElementById("box2");
+var box3=document.getElementById("box3");
+console.log(hasClass(box1,"box1"));
+addClass(box2,"box3")
+
+</script>
+</body>
+</html>

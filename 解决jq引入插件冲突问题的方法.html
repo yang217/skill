@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<!-- 在做项目的时候，需要引用他人写得插件。
+但是当使用时，会出现类似$(...).timelinr is not a function的报错（注：$().timelinr是引用插件调用的函数），
+并且所引用的插件不会有动画效果，样式出现问题。这是因为自己引用的jquery与其他插件引用的jquery冲突。
+方法一：把引入文件顺序换一下。
+方法二：如果文件顺序不能交换。则：
+要解决冲突，只需在Jquery与相冲突的JQ之间加上以下代码:
+<script type="text/javascript">
+　 　 var jq=$;
+</script>
+并把插件库的函数改为：
+Jq().timelinr
+即可解决问题
+详细： -->
+<script type="text/javascript" src="../js/jquery.js"></script>//插件调用的JQ
+<script type="text/javascript">
+        var jq=$;
+  </script>
+  <script src="../js/jquery-1.11.3.js"></script>//自己需要使用的JQ
+  <script type="text/javascript">//插件调用的函数
+        $(function(){
+            $().timelinr({//将$().timelinr改为jq().timelinr
+                autoPlay: 'true',
+                autoPlayDirection: 'forward',
+                startAt: 4
+            })
+        });
+  </script>
+</body>
+</html>

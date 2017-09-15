@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="node_modules/clipboard/dist/clipboard.js"></script>
+</head>
+<body>
+<input type="" name=" " id="copy" value="">;
+<button id="btn"  data-clipboard-text="2222" class="btn">复制按钮</button>
+<!-- <button id="btn"  data-clipboard-action="cut"      data-clipboard-target="#copy" class="btn">复制按钮</button>
+ -->
+ <input type="" name="" placeholder="查看效果">
+<script type="text/javascript">
+var btn=document.getElementById("btn");
+var clipboard=new Clipboard(btn)
+	clipboard.on('success', function(e) {
+				console.log(e);
+			});
+
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+</script>
+</body>
+</html>

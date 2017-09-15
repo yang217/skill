@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.imgup,.imgblob{
+				width:400px;
+				position: relative;
+				float: left;
+			}
+			.imgup>p>img,.imgblob>p>img{
+				width:300px;
+			}
+			#f,#blobinput{
+				position: absolute;
+				width:100px;
+				height:40px;
+				top:0;
+				left:0;
+				opacity: 0;
+				cursor: pointer;
+			}
+			.upload,.blobup{
+				width:100px;
+				height:40px;
+				cursor: pointer;
+			}
+		</style>
+		<script type="text/javascript">
+			//img转base64位
+			function change() {
+			    var pic = document.getElementById("preview"),
+		        file = document.getElementById("f");
+		 		html5Reader(file);
+			}
+			function html5Reader(file){
+			    var file = file.files[0];
+			    var reader = new FileReader();
+			    reader.readAsDataURL(file);
+			    reader.onload = function(e){
+			        var pic = document.getElementById("preview");
+			        pic.src=this.result;
+			    }
+			 }
+			//img转blob对象
+			function changes(){
+					blobs();
+				}
+			function blobs(){
+				var file = document.getElementById('blobinput');
+				var fileList = file.files;
+				console.log(fileList);
+				var imgUrl = window.URL.createObjectURL(fileList[0]);
+				var pic = document.getElementById("blobview");
+				pic.src=imgUrl;
+			}
+		</script>
+	</head>
+	<body>
+		<div class="imgup">
+		    <input id="f" type="file" name="f" onchange="change()" accept="image/jpeg,image/jpg,image/png"/>
+		    <div class="upload">img-base64位上传图片</div>
+		    <p>base64位预览:</p>
+		    <p>
+		        <img id="preview" alt="" name="pic" />
+		    </p>
+		</div>
+		<div class="imgblob">
+			<input id="blobinput" type="file" name="f" onchange="changes()" accept="image/jpeg,image/jpg,image/png"/>
+		    <div class="blobup">img-blob对象上传图片</div>
+		    <p>blob对象预览:</p>
+		    <p>
+		        <img id="blobview" alt="" name="pic" />
+		    </p>
+		</div>
+	</body>
+</html>

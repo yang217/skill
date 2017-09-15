@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <script type="text/javascript">
+  	var ids=[
+  	{
+  		id:1,
+  		arr:[
+  		{
+  			id:11,
+  			arr:[{
+  				id:111
+  			}
+  			]
+  		}
+  		]
+
+
+  	}
+
+
+
+  	];
+  	var newarr=[];
+  	function getallids(arr){
+        if(!isArray(arr)){//负负得正
+        	return false;
+        }
+        for(var i=0;i<arr.length;i++){
+        	newarr.push(arr[i].id);
+        	if(isArray(arr[i].arr)){
+        		arguments.callee(arr[i].arr)//代表arr[i].arr也执行这个函数
+
+        	}
+
+        }
+        
+
+  	}
+
+  	getallids(ids);
+  	console.log(newarr)
+  	function isArray(o){
+  	  return	Object.prototype.toString.call(o)=="[object Array]"?true:false;
+  	}
+  	var arr=[1,2,3]
+   console.log(isArray(arr));
+  </script>
+</body>
+</html>

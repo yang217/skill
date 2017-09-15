@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+function urlsafe_b64encode($string) {//URL安全的字符串编码：
+   $data = base64_encode($string);
+   $data = str_replace(array('+','/','='),array('-','_',''),$data);
+   return $data;
+}
+
+content.log(urlsafe_b64encode("www.baidu.com"))
+function urlsafe_b64decode($string) {//URL安全的字符串解码：
+   $data = str_replace(array('-','_'),array('+','/'),$string);
+   $mod4 = strlen($data) % 4;
+   if ($mod4) {
+       $data .= substr('====', $mod4);
+   }
+   return base64_decode($data);
+}
+</script>
+</body>
+</html>

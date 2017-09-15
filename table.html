@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <div id="文件夹组" role="tree" aria-label="文件夹" >
+    <div id="n-0" role="treeitem"（视图元素） aria-expanded="true（真）" tabindex="0">库</div>
+    <div role="group" >
+        <!-- Child tree items: Documents, Music, Pictures ... -->
+        <div id="n-0-1" role="treeitem" aria-expanded="false（假）" tabindex="-1">文档</div>
+        <div id="n-0-2" role="treeitem" aria-expanded="false" tabindex="-1">音乐</div>
+        <div id="n-0-3" role="treeitem" aria-expanded="false" tabindex="-1">图片</div>
+    </div>
+</div>
+<script>
+    // 获取文件夹树视图元素节点对象。
+    var folders = document.getElementById('文件组');
+    // Ensure keyboard navigation/operation with arrow keys.
+    folders.addEventListener('keydown', function(e) {
+        var itm = e.srcElement;
+        if (e.keyCode === Win.Utilities.Key.upArrow) {
+            // Update tabindex attributes.
+        } else if (e.keyCode === Win.Utilities.Key.downArrow) {
+            // Update tabindex attributes.
+        }
+    });
+</script>
+
+</body>
+</html>
